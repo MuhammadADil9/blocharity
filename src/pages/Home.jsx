@@ -1,10 +1,7 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
-import './App.css'
-import Donor from './pages/Donor'
-import Distributor from './pages/Distributor'
+import { useNavigate } from 'react-router-dom'
+import '../styles/Home.css'
 
-// Home Page Component
 function Home() {
   const navigate = useNavigate()
 
@@ -27,17 +24,4 @@ function Home() {
   )
 }
 
-// Main App Router
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/donor" element={<Donor />} />
-        <Route path="/distributor" element={<Distributor />} />
-      </Routes>
-    </Router>
-  )
-}
-
-export default App
+export default Home

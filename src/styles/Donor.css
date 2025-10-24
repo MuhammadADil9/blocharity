@@ -1,0 +1,92 @@
+.donor-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(-45deg, #0f172a, #1e293b, #0ea5e9, #22c55e);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
+  color: #fff;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Animated background */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #22c55e;
+}
+
+/* Main content */
+.donor-content {
+  position: relative;
+  top: 120px;
+  text-align: center;
+  z-index: 2;
+  animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating sidebar */
+.floating-sidebar {
+  position: fixed;
+  right: 20px;
+  top: 120px;
+  width: 280px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.sidebar-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #22c55e;
+  padding-bottom: 5px;
+}
