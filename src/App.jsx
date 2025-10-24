@@ -7,7 +7,7 @@ function App() {
       <div className="overlay"></div>
       <div className="content">
         <h1 className="title">BloCharity</h1>
-        <p className="subtitle">Empowering transparent charity with blockchain</p>
+        <p className="subtitle">Decentralized Charity Application</p>
         <div className="button-group">
           <button className="role-button donor">Donor</button>
           <button className="role-button distributor">Distributor</button>
