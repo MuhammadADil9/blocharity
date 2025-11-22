@@ -1,0 +1,220 @@
+/* ===== SIGNUP PAGE CONTAINER ===== */
+
+.signup-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /* Matching App.css animated gradient */
+  background: linear-gradient(-45deg, #1e293b, #0f172a, #1e3a8a, #0ea5e9);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+}
+
+/* Background animation - same as App.css */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Blur overlay - matching App.css */
+.signup-container .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  z-index: 1;
+}
+
+/* ===== SIGNUP CARD ===== */
+
+.signup-card {
+  position: relative;
+  z-index: 2;
+  width: 420px;
+  max-width: 90%;
+  padding: 40px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: fadeSlideUp 0.8s ease-out;
+}
+
+/* Fade + slide animation for card */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.signup-title {
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.signup-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+/* ===== AUTH BUTTONS ===== */
+
+.auth-btn {
+  width: 100%;
+  padding: 16px 24px;
+  margin: 12px 0;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.auth-btn::before {
+  display: none;
+}
+
+.auth-btn:hover {
+  transform: translateY(-2px);
+}
+
+.auth-btn:active {
+  transform: translateY(0);
+}
+
+/* ===== ICONS ===== */
+
+.auth-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 0;
+  background: none;
+  padding: 0;
+}
+
+/* White circle background for Facebook & MetaMask icons */
+.auth-btn.facebook .auth-icon,
+.auth-btn.metamask .auth-icon {
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Google icon stays clean - no background needed */
+.auth-btn.google .auth-icon {
+  width: 28px;
+  height: 28px;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* ===== BUTTON-SPECIFIC STYLES ===== */
+
+/* Google */
+.auth-btn.google {
+  background: #ffffff;
+  color: #3c4043;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.auth-btn.google:hover {
+  background: #f8f9fa;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Facebook */
+.auth-btn.facebook {
+  background: linear-gradient(135deg, #1877F2 0%, #0d65d9 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(24, 119, 242, 0.4);
+}
+
+.auth-btn.facebook:hover {
+  background: linear-gradient(135deg, #1a85ff 0%, #1877F2 100%);
+  box-shadow: 0 6px 20px rgba(24, 119, 242, 0.5);
+}
+
+/* MetaMask */
+.auth-btn.metamask {
+  background: linear-gradient(135deg, #f6851b 0%, #e07a16 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(246, 133, 27, 0.4);
+}
+
+.auth-btn.metamask:hover {
+  background: linear-gradient(135deg, #ff9429 0%, #f6851b 100%);
+  box-shadow: 0 6px 20px rgba(246, 133, 27, 0.5);
+}
+
+/* ===== LOGIN LINK ===== */
+
+.login-text {
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 24px;
+  font-size: 0.9rem;
+}
+
+.login-link {
+  color: #0ea5e9;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.login-link:hover {
+  color: #38bdf8;
+  text-decoration: underline;
+}
+
+/* ===== RESPONSIVENESS ===== */
+
+@media (max-width: 480px) {
+  .signup-card {
+    padding: 24px 20px;
+  }
+  
+  .auth-btn {
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+  
+  .auth-icon {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .auth-btn.facebook .auth-icon,
+  .auth-btn.metamask .auth-icon {
+    width: 28px;
+    height: 28px;
+  }
+}

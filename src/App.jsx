@@ -1,10 +1,13 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import './App.css'
+
 import Donor from './pages/Donor'
 import Distributor from './pages/Distributor'
-
-// Home Page Component
+import Signup from './pages/Signup'
+import Login from './pages/Login'
+import RoleSelection from './pages/RoleSelection'
+// HOME PAGE
 function Home() {
   const navigate = useNavigate()
 
@@ -13,28 +16,36 @@ function Home() {
       <div className="overlay"></div>
       <div className="content">
         <h1 className="title">BloCharity</h1>
-        <p className="subtitle">Decentralized Charity Application</p>
-        <div className="button-group">
-          <button className="role-button donor" onClick={() => navigate('/donor')}>
-            Donor
-          </button>
-          <button className="role-button distributor" onClick={() => navigate('/distributor')}>
-            Distributor
-          </button>
-        </div>
+        <p className="subtitle">
+          A decentralized charity platform revolutionizing trust, transparency, and global giving.
+        </p>
+
+        <button className="get-started-btn" onClick={() => navigate('/signup')}>
+          Get Started
+        </button>
       </div>
     </div>
   )
 }
 
-// Main App Router
+// MAIN ROUTER
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/login"
+          element={
+            <Login />
+          }
+        />
+        <Route path="/role-selection" element={<RoleSelection />} />
         <Route path="/donor" element={<Donor />} />
         <Route path="/distributor" element={<Distributor />} />
+
+        
       </Routes>
     </Router>
   )

@@ -10,12 +10,21 @@ function Home() {
       <div className="overlay"></div>
       <div className="content">
         <h1 className="title">BloCharity</h1>
-        <p className="subtitle">Decentralized Charity Application</p>
-        <div className="button-group">
-          <button className="role-button donor" onClick={() => navigate('/donor')}>
+        <p className="subtitle">
+          Decentralized Charity Application
+        </p>
+
+        <div className="button-group" style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center' }}>
+          <button
+            className="role-button donor"
+            onClick={() => navigate('/donor')}
+          >
             Donor
           </button>
-          <button className="role-button distributor" onClick={() => navigate('/distributor')}>
+          <button
+            className="role-button distributor"
+            onClick={() => navigate('/distributor')}
+          >
             Distributor
           </button>
         </div>
