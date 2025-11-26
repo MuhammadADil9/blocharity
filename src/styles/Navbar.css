@@ -1,0 +1,153 @@
+/* Global Navbar - Consistent with App theme */
+.global-navbar {
+   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 50px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #fff;
+  text-shadow: 0 0 12px rgba(14, 165, 233, 0.6);
+  transition: all 0.3s ease;
+}
+
+.nav-logo:hover {
+  text-shadow: 0 0 20px rgba(14, 165, 233, 0.9);
+  transform: scale(1.05);
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-link {
+  cursor: pointer;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 8px 0;
+}
+
+/* Underline effect on hover */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #0ea5e9, #22c55e);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: #0ea5e9;
+  transform: translateY(-2px);
+}
+
+.notification-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #fff;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.notification-icon:hover {
+  color: #0ea5e9;
+  transform: scale(1.1);
+}
+
+/* Notification Panel - Matching theme */
+.notification-panel {
+  position: absolute;
+  right: 40px;
+  top: 80px;
+  width: 300px;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+  backdrop-filter: blur(16px);
+  padding: 20px;
+  border-radius: 16px;
+  border: 2px solid rgba(14, 165, 233, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.3s ease-out;
+  color: #fff;
+}
+
+.notification-panel h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+  color: #0ea5e9;
+  text-shadow: 0 0 8px rgba(14, 165, 233, 0.4);
+}
+
+.notification-panel ul {
+  margin-top: 10px;
+  padding-left: 18px;
+  list-style: none;
+}
+
+.notification-panel li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.notification-panel li:last-child {
+  border-bottom: none;
+}
+
+.notification-panel li:hover {
+  padding-left: 8px;
+  color: #0ea5e9;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(-15px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .global-navbar {
+    padding: 15px 20px;
+  }
+  
+  .nav-links {
+    gap: 15px;
+  }
+  
+  .nav-link {
+    font-size: 0.9rem;
+  }
+  
+  .notification-panel {
+    right: 20px;
+    width: 260px;
+  }
+}

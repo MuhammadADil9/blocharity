@@ -1,3 +1,6 @@
+/* ================================
+   ROOT CONTAINER
+================================ */
 .distributor-container {
   position: relative;
   height: 100vh;
@@ -6,87 +9,212 @@
   background-size: 400% 400%;
   animation: gradientMove 10s ease infinite;
   color: #fff;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   font-family: 'Poppins', sans-serif;
 }
 
-/* Animated background */
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Navbar */
+/* ================================
+   NAVBAR
+================================ */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 60px;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(6px);
+  padding: 18px 50px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: fixed;
-  width: 100%;
   top: 0;
-  z-index: 10;
+  width: 100%;
+  z-index: 20;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
+  color: #facc15;
   letter-spacing: 1px;
 }
 
+/* Navigation links */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 30px;
+  align-items: center;
+  gap: 35px;
 }
 
 .nav-links a {
-  color: #fff;
-  text-decoration: none;
+  color: #ffffffd9;
   font-weight: 500;
-  transition: color 0.3s ease;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .nav-links a:hover {
   color: #facc15;
 }
 
-/* Main content */
-.distributor-content {
+/* Highlight animation under link */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #facc15;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ================================
+   NOTIFICATION ICON
+================================ */
+.notify-icon {
   position: relative;
-  top: 120px;
-  text-align: center;
-  z-index: 2;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.notify-icon:hover {
+  transform: scale(1.1);
+}
+
+.notification-bubble {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  background: #e11d48;
+  color: #fff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notification-panel {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  width: 260px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  padding: 15px;
+  animation: fadeIn 0.3s ease;
+  z-index: 30;
+}
+
+.notification-item {
+  padding: 10px 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+/* ================================
+   PROFILE DROPDOWN
+================================ */
+.profile-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  width: 180px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.35);
+  animation: fadeIn 0.3s ease;
+  z-index: 30;
+}
+
+.profile-menu-item {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: background 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.profile-menu-item:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.profile-menu-item:last-child {
+  border-bottom: none;
+}
+
+/* ================================
+   DASHBOARD MAIN CONTENT
+================================ */
+.distributor-content {
+  margin-top: 140px;
+  padding: 30px 60px;
   animation: fadeIn 1.5s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.distributor-content h1 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
 }
 
-/* Floating sidebar */
+.distributor-content p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* ================================
+   FLOATING SIDEBAR
+================================ */
 .floating-sidebar {
   position: fixed;
-  right: 20px;
-  top: 120px;
-  width: 280px;
-  height: 400px;
-  background: rgba(255, 255, 255, 0.08);
+  right: 25px;
+  top: 140px;
+  width: 290px;
+  height: 450px;
+  background: rgba(255,255,255,0.08);
   border-radius: 16px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 25px rgba(0,0,0,0.3);
   padding: 20px;
   overflow-y: auto;
 }
 
 .sidebar-title {
   font-weight: 600;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
+  font-size: 1.2rem;
   border-bottom: 2px solid #facc15;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

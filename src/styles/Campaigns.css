@@ -1,0 +1,283 @@
+.campaigns-page {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #0f172a, #1e293b, #1e3a8a, #facc15);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  color:#fff;
+  padding-bottom:80px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Background animation - matches App.css */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; } 
+}
+
+.campaigns-container { padding-top: 100px; padding-left: 48px; padding-right: 320px; } /* leave room for sidebar */
+
+.campaigns-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+  gap: 18px;
+  margin-top:18px;
+}
+
+/* campaign card */
+.campaign-card {
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 14px;
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: transform .18s, box-shadow .18s;
+  cursor: pointer;
+}
+.campaign-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.45); }
+
+.campaign-card.completed { opacity: 0.6; cursor: default; transform: none; box-shadow: none; }
+.campaign-card .card-top { display:flex; justify-content:space-between; align-items:center; }
+.campaign-card .tag { background: rgba(255,255,255,0.06); padding:6px 10px; border-radius:999px; font-size:0.85rem; }
+
+.card-desc { color: #dbeafe; margin:10px 0 12px 0; min-height:42px; }
+
+.card-meta { font-size:0.9rem; color:#e6eefc; opacity:0.9; display:flex; gap:10px; align-items:center; }
+
+.card-footer { display:flex; justify-content:space-between; align-items:center; margin-top:12px; gap:12px; }
+.progress { flex:1; height:8px; background: rgba(255,255,255,0.05); border-radius:999px; overflow:hidden; margin-right:12px; }
+.progress-bar { height:100%; background: linear-gradient(90deg,#0ea5e9,#22c55e); width:40%; }
+
+/* detail modal */
+/* ------------------ Updated Campaign Detail Modal (More Visible) ------------------ */
+
+.campaign-detail-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75); /* darker overlay */
+  backdrop-filter: blur(4px); /* subtle background blur */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* ensure it's fully on top */
+}
+
+.campaign-detail-card {
+  width: 720px;
+  background: rgba(15, 23, 42, 0.88); /* deep navy glass */
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 26px;
+  border-radius: 14px;
+  box-shadow: 
+      0 0 25px rgba(0,0,0,0.65),
+      0 8px 32px rgba(0,0,0,0.45);
+  backdrop-filter: blur(12px); /* strong foreground clarity */
+  color: #fff;
+  position: relative;
+  animation: fadeInScale 0.35s ease;
+}
+
+@keyframes fadeInScale {
+  0% {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  right: 14px;
+  top: 12px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  color: #facc15;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.2);
+  color: #ffe47a;
+}
+
+/* Description text */
+.cd-desc {
+  color: #e2e8f0;
+  font-size: 0.96rem;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* Meta info */
+.cd-meta p {
+  margin: 7px 0;
+  font-size: 0.95rem;
+  color: #f1f5f9;
+}
+
+/* Actions (buttons) */
+.cd-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 18px;
+  justify-content: flex-end;
+}
+
+.cd-actions .primary {
+  background: linear-gradient(90deg, #0ea5e9, #22c55e);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #fff;
+  transition: 0.25s ease;
+  cursor: pointer;
+}
+
+.cd-actions .primary:hover {
+  opacity: 0.85;
+  transform: translateY(-3px);
+}
+
+.cd-actions .ghost {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 10px 16px;
+  border-radius: 10px;
+  color: #fff;
+  transition: 0.25s ease;
+  cursor: pointer;
+}
+
+.cd-actions .ghost:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-3px);
+}
+
+/* Wizard Title */
+.wizard-title {
+  margin-top: 25px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #facc15;
+  text-align: center;
+}
+
+/* Wizard Container */
+.wizard-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0;
+  padding: 0 10px;
+}
+
+/* Step */
+.wizard-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.4;
+  transition: 0.4s ease;
+}
+
+.wizard-step.active-step {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.wizard-step .circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #facc15;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  margin-bottom: 8px;
+  transition: 0.4s ease;
+}
+
+.wizard-step.active-step .circle {
+  background: #facc15;
+  color: #000;
+  box-shadow: 0 0 10px #facc15;
+}
+
+.wizard-step span {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ------------------ Wizard Progress Bar ------------------ */
+.cd-progress {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0;
+  padding: 0 10px;
+}
+
+.cd-step {
+  text-align: center;
+  opacity: 0.3;
+  transition: 0.3s;
+}
+
+.cd-step.active {
+  opacity: 1;
+}
+
+.cd-step-circle {
+  width: 38px;
+  height: 38px;
+  margin: auto;
+  border-radius: 50%;
+  background: rgba(250, 204, 21, 0.25);
+  border: 2px solid #facc15;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: #fff;
+}
+
+.cd-step-label {
+  margin-top: 6px;
+  font-size: 0.85rem;
+}
+
+/* ------------------ Stage Box ------------------ */
+.cd-stage-box {
+  background: rgba(255,255,255,0.07);
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(8px);
+}
+
+.next-stage-btn {
+  margin-top: 12px;
+  padding: 10px 18px;
+  background: #facc15;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.next-stage-btn:hover {
+  background: #ffe564;
+  transform: translateY(-2px);
+}
+
+.cd-final-text {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #4ade80;
+}
